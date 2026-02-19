@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import MusicPlayer from './components/MusicPlayer'
+import SearchBar from './components/SearchBar'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,6 +10,8 @@ function App() {
 
   return (
     <>
+    <SearchBar />
+    <MusicPlayer />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
