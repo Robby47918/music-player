@@ -7,13 +7,13 @@ const MusicPlayer = ({ currentTrack }) => {
 
     useEffect(() => {
         if (currentTrack && audioRef.current) {
-            audioRef.currents.src = currentTrack.preview;
+            audioRef.current.src = currentTrack.preview;
             audioRef.current.play();
             setIsPlaying(true);
         }   }, [currentTrack]);
 
     const togglePlay = () => {
-        if (audioRef.current) return;
+        if (!audioRef.current) return;
             if (isPlaying) {
                 audioRef.current.pause();
                 setIsPlaying(false);
