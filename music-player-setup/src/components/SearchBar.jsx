@@ -12,7 +12,7 @@ const SearchBar = ({ onSearch }) => {
     }
     };
     return (
-        <form onSubmit={hndleSubmit} className="flex items-center gap-2 p-4">
+        <form onSubmit={handleSubmit} className="flex items-center gap-2 p-4">
             <input
                 type="text"
                 value={query}
