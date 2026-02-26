@@ -1,4 +1,4 @@
-import { use, useState } from 'react';
+import { useState, useEffect } from 'react';
 import MusicPlayer from './components/MusicPlayer';
 import SearchBar from './components/SearchBar';
 import TrackList from './components/TrackList';
@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
   const [tracks, setTracks] = useState([]);
-  const [currentTrack, setCgurrentTrack] = useState(null);
+  const [currentTrack, setCurrentTrack] = useState(null); // fixed typo
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [playlist, setPlaylist] = useState([]); 
@@ -38,6 +38,7 @@ function App() {
     setPlaylist((prev) => [...prev, track]);
     console.log("Added to playlist:", track.title);
   };
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -47,32 +48,36 @@ function App() {
   }, [darkMode]);
 
   return (
-    <><h1 className="text-3xl font-bold underline">Musically</h1><div className="app-container p-6">
-      <SearchBar onSearch={handleSearch} />
+    <>
+      <h1 className="text-3xl font-bold underline">Musically</h1>
+      <div className="app-container p-6">
+        <SearchBar onSearch={handleSearch} />
 
-      {loading && <Loader />}
-      {error && <ErrorMessage message={error} />}
-      {!loading && !error && (
-        <>
-          <TrackList
-            tracks={tracks}
-            onPlay={handlePlay}
-            onAddToPlaylist={handleAddToPlaylist} />
-          <MusicPlayer currentTrack={currentTrack} />
+        {loading && <Loader />}
+        {error && <ErrorMessage message={error} />}
+        {!loading && !error && (
+          <>
+            <TrackList
+              tracks={tracks}
+              onPlay={handlePlay}
+              onAddToPlaylist={handleAddToPlaylist}
+            />
+            <MusicPlayer currentTrack={currentTrack} />
 
-          {playlist.length > 0 && (
-            <div className="playlist mt-4">
-              <h2 className="text-xl font-bold mb-2">My Playlist</h2>
-              <TrackList
-                tracks={playlist}
-                onPlay={handlePlay}
-                onAddToPlaylist={handleAddToPlaylist} />
-            </div>
-          )}
-        </>
-      )}
-
-    </div></>
+            {playlist.length > 0 && (
+              <div className="playlist mt-4">
+                <h2 className="text-xl font-bold mb-2">My Playlist</h2>
+                <TrackList
+                  tracks={playlist}
+                  onPlay={handlePlay}
+                  onAddToPlaylist={handleAddToPlaylist}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </>
   );
 }
 
