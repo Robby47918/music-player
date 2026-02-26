@@ -43,11 +43,11 @@ const MusicPlayer = ({ currentTrack }) => {
           />
           <div>
             <h3 className="font-bold">{currentTrack.title}</h3>
-            <p className="text-sm text-gray-600">{currentTrack.artist.name}</p>
+            <p className="text-sm text-purple-600">{currentTrack.artist.name}</p>
           </div>
           <button
             onClick={togglePlayPause}
-            className="bg-blue-500 text-blue px-4 py-2 rounded hover:bg-blue-600"
+            className="bg-gray-200 text-purple-400 px-4 py-2 rounded hover:bg-purple-600"
           >
             {isPlaying ? "Pause" : "Play"}
           </button>
@@ -58,11 +58,12 @@ const MusicPlayer = ({ currentTrack }) => {
             step="0.01"
             value={volume}
             onChange={handleVolumeChange}
+            className="w-40 h-2 rounded-lg bg-gradient-to-r from-purple-400 via-red-500 to-pink-600"
           />
           <audio ref={audioRef}></audio>
         </>
       ) : (
-        <p className="text-gray-600">Select a track to play</p>
+        <p className="italic text-purple-600">Select a track to play</p>
       )}
     </div>
   );

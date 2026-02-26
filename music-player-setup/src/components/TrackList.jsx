@@ -3,7 +3,7 @@ import TrackCard from "./TrackCard";
 
 const TrackList = ({ tracks, onPlay, onAddToPlaylist }) => {
   if (!tracks || tracks.length === 0) {
-    return <p className="text-gray-600">No tracks found</p>;
+    return <p className="text-purple-600 italic text-lg">No tracks found</p>;
   }
 
   return (

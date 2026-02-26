@@ -49,8 +49,9 @@ function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-red-500">Musically</h1>
-      <div className="app-container p-6">
+      <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 drop-shadow-lg tracking-wide">
+        Musically</h1>
+      <div className="app-container p-15">
         <SearchBar onSearch={handleSearch} />
 
         {loading && <Loader />}
@@ -66,7 +67,7 @@ function App() {
 
             {playlist.length > 0 && (
               <div className="playlist mt-4">
-                <h2 className="text-xl font-bold mb-2">My Playlist</h2>
+                <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 tracking-tight drop-shadow-md">My Playlist</h2>
                 <TrackList
                   tracks={playlist}
                   onPlay={handlePlay}
