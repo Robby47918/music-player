@@ -51,6 +51,7 @@ function App() {
     <>
       <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 drop-shadow-lg tracking-wide">
         Musically</h1>
+        <h3 className="text-lg text-gray-500 mb-6">Your Ultimate Music Player</h3>
       <div className="app-container p-15">
         <SearchBar onSearch={handleSearch} />
 
