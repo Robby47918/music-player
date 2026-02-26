@@ -12,7 +12,7 @@ const SearchBar = ({ onSearch }) => {
     }
     };
     return (
-        <form onSubmit={handleSubmit} className="flex items-center gap-2 p-4">
+        <form onSubmit={handleSubmit} className="bg-purple-900 flex items-center gap-2 p-4">
             <input
                 type="text"
                 value={query}
@@ -22,7 +22,7 @@ const SearchBar = ({ onSearch }) => {
                 />
                 <button
                     type="submit"
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    className="bg-blue-500 text-purple-400 px-4 py-2 rounded hover:bg-blue-600"
                     >
                     Search
                 </button>
