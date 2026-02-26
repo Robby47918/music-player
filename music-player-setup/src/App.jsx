@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
   const [tracks, setTracks] = useState([]);
-  const [currentTrack, setCurrentTrack] = useState(null);
+  const [currentTrack, setCgurrentTrack] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [playlist, setPlaylist] = useState([]); 
