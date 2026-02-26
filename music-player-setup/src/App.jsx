@@ -1,20 +1,18 @@
-import { useState } from 'react';
+import { use, useState } from 'react';
 import MusicPlayer from './components/MusicPlayer';
 import SearchBar from './components/SearchBar';
 import TrackList from './components/TrackList';
 import Loader from './components/Loader';
 import ErrorMessage from './components/ErrorMessage';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
   const [tracks, setTracks] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [playlist, setPlaylist] = useState([]); // ✅ Added playlist state
+  const [playlist, setPlaylist] = useState([]); 
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleSearch = async (query) => {
     setLoading(true);
@@ -40,9 +38,16 @@ function App() {
     setPlaylist((prev) => [...prev, track]);
     console.log("Added to playlist:", track.title);
   };
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   return (
-    <div className="app-container p-6">
+    <><h1 className="text-3xl font-bold underline">Musically</h1><div className="app-container p-6">
       <SearchBar onSearch={handleSearch} />
 
       {loading && <Loader />}
@@ -52,24 +57,22 @@ function App() {
           <TrackList
             tracks={tracks}
             onPlay={handlePlay}
-            onAddToPlaylist={handleAddToPlaylist}
-          />
+            onAddToPlaylist={handleAddToPlaylist} />
           <MusicPlayer currentTrack={currentTrack} />
 
-          {playlist.length > 0 && ( 
+          {playlist.length > 0 && (
             <div className="playlist mt-4">
               <h2 className="text-xl font-bold mb-2">My Playlist</h2>
               <TrackList
                 tracks={playlist}
                 onPlay={handlePlay}
-                onAddToPlaylist={handleAddToPlaylist}
-              />
+                onAddToPlaylist={handleAddToPlaylist} />
             </div>
           )}
         </>
       )}
 
-    </div>
+    </div></>
   );
 }
 
