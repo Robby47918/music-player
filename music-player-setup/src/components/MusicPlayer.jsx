@@ -33,39 +33,52 @@ const MusicPlayer = ({ currentTrack }) => {
   };
 
   return (
-    <div className="flex items-center gap-4 p-4 bg-gray-100 rounded">
-      {currentTrack ? (
-        <>
-          <img
-            src={currentTrack.album.cover_small}
-            alt={currentTrack.title}
-            className="w-16 h-16 rounded"
-          />
-          <div>
-            <h3 className="font-bold">{currentTrack.title}</h3>
-            <p className="text-sm text-purple-600">{currentTrack.artist.name}</p>
-          </div>
-          <button
-            onClick={togglePlayPause}
-            className="bg-gray-200 text-purple-400 px-4 py-2 rounded hover:bg-purple-600"
-          >
-            {isPlaying ? "Pause" : "Play"}
-          </button>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={volume}
-            onChange={handleVolumeChange}
-            className="w-40 h-2 rounded-lg bg-gradient-to-r from-purple-400 via-red-500 to-pink-600"
-          />
-          <audio ref={audioRef}></audio>
-        </>
-      ) : (
-        <p className="italic text-purple-600">Select a track to play</p>
-      )}
-    </div>
+    <div className="flex items-center gap-6 p-6 bg-white rounded-lg shadow-lg">
+  {currentTrack ? (
+    <>
+      {/* Album Cover */}
+      <img
+        src={currentTrack.album.cover_small}
+        alt={currentTrack.title}
+        className="w-20 h-20 rounded-lg shadow-md"
+      />
+
+      {/* Track Info */}
+      <div>
+        <h3 className="text-lg font-extrabold text-gray-900">
+          {currentTrack.title}
+        </h3>
+        <p className="text-sm italic text-gray-500">
+          {currentTrack.artist.name}
+        </p>
+      </div>
+
+      {/* Play/Pause Button */}
+      <button
+        onClick={togglePlayPause}
+        className="px-6 py-3 rounded-full bg-gray-200 text-gray-800 font-semibold hover:bg-gray-300 transition"
+      >
+        {isPlaying ? "Pause" : "Play"}
+      </button>
+
+      {/* Volume Control */}
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value={volume}
+        onChange={handleVolumeChange}
+        className="w-40 h-2 rounded-lg bg-gray-300 accent-gray-800"
+      />
+
+      {/* Hidden Audio Element */}
+      <audio ref={audioRef}></audio>
+    </>
+  ) : (
+    <p className="italic text-gray-500">Select a track to play</p>
+  )}
+</div>
   );
 };
 
